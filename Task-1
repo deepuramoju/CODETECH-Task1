@@ -1,0 +1,54 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+
+# Sample DataFrame
+data = {
+    'Age': [25, 30, 35, None, 40],
+    'Salary': [50000, 60000, None, 80000, 90000],
+    'City': ['New York', 'Los Angeles', 'New York', 'Chicago', 'Los Angeles'],
+    'Purchased': ['Yes', 'No', 'Yes', 'No', 'Yes']
+}
+df = pd.DataFrame(data)
+
+
+X = df.drop(columns=['Purchased'])
+y = df['Purchased']
+
+
+num_features = ['Age', 'Salary']
+cat_features = ['City']
+
+
+num_transformer = Pipeline([
+    ('imputer', SimpleImputer(strategy='mean')),
+    ('scaler', StandardScaler())
+])
+
+cat_transformer = Pipeline([
+    ('encoder', OneHotEncoder())
+])
+
+
+preprocessor = ColumnTransformer([
+    ('num', num_transformer, num_features),
+    ('cat', cat_transformer, cat_features)
+])
+
+
+X_processed = preprocessor.fit_transform(X)
+
+
+processed_df = pd.DataFrame(X_processed)
+
+
+processed_df.to_csv('processed_data.csv', index=False)
+
+
+print("Transformed Data:")
+print(processed_df.head())
+
+print("DELIVERABLE: A PYTHON SCRIPT OR NOTEBOOK AUTOMATING THE ETL PROCESS.")
