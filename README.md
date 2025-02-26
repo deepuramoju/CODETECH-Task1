@@ -1,9 +1,4 @@
-**Name:** Ramoju Gnana Deepika
-**Company:** CODETECH IT solutions
-**Id:** CT6WSFC
-**Domain:** Data Science
-**Duration:** February 25th to April 10th, 2025
-**Mentor:** N.Santhosh
+**Name:** Ramoju Gnana Deepika**Company:** CODETECH IT solutions**Id:** CT6WSFC**Domain:** Data Science**Duration:** February 25th to April 10th, 2025**Mentor:** N.Santhosh
 
 ##Overview of the project
 
